@@ -1,0 +1,2 @@
+# Snapp
+Database course project
