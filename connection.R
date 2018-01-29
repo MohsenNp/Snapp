@@ -1,7 +1,7 @@
 connect.to.db <- function(){
   library("RPostgreSQL")
   drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv, dbname = "postgres",
+  con <- dbConnect(drv, dbname = "snapp",
                    host = "localhost", port = 5432,
                    user = "", password = "")
   #on.exit(dbDisconnect(con))

@@ -1,6 +1,6 @@
 library(shiny)
 shinyServer(function(input, output) {
-  datafile <- callModule(free, "free", stringsAsFactors = FALSE)
+  datafile <- callModule(customSQL, "customSQL", stringsAsFactors = FALSE)
   callModule(tables.server, "stf", table.name="Staffs")
   callModule(tables.server, "drv", table.name="Drivers")
   callModule(tables.server, "car", table.name="Cars")

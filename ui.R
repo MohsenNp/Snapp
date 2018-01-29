@@ -21,9 +21,9 @@ shinyUI(
                       )),
              tabPanel("Insert",
                       navlistPanel(
-                        tabPanel("Drivers", ),
+                        tabPanel("Drivers")
                         # tabPanel("User Table", userInputUI("userInput"))
                       )),
-             tabPanel("Custom SQL!", freeUI("free"))
+             tabPanel("Custom SQL!", customSQL.UI("customSQL"))
   )
 )
