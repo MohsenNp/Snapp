@@ -23,7 +23,7 @@
 
 server = (function(input, output,session) {
   
-  USER <- reactiveValues(Logged = Logged)
+  USER <- reactiveValues(Logged = FALSE)
   
   observe({ 
     if (USER$Logged == FALSE) {
@@ -38,9 +38,15 @@ server = (function(input, output,session) {
               USER$Logged <- TRUE
             } 
           }
-        } 
+        }
       }
     }    
+  })
+  observeEvent(input$logout_btn, {
+    USER$Logged <- FALSE
+    output$page <- renderUI({
+      div(class="outer",do.call(bootstrapPage,c("",login.UI())))
+    })
   })
   observe({
     if (USER$Logged == FALSE) {
@@ -65,13 +71,14 @@ server = (function(input, output,session) {
       callModule(tables.server, "discod", table.name="DiscountCodes")
       callModule(tables.server, "trvl", table.name="Travels")
       callModule(tables.server, "dest", table.name="TravelDestinations")
-      # callModule(tables.server, "userp", table.name="Userp") # ????????
       callModule(tables.server, "userdiscod", table.name="UserDiscountCodes")
       callModule(tables.server, "favaddrss", table.name="UserFavouriteAddresses")
       callModule(tables.server, "sprvsn", table.name="CommentsOnOrders")
+      callModule(insert.staff, "insertStaff")
       output$table <- renderDataTable({
         datafile()
       })
     }
   })
 })
+

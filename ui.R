@@ -1,13 +1,15 @@
 rm(list = ls())
 library(shiny)
+library(shinythemes)
 
 Logged = FALSE;
 user_pass <- data.frame(user = c('admin', 'hamid', 'mohsen'), pass <- c('admin', 'hamid', 'mohsen'))
 
 login.UI <- function(){
-  tagList(
-    div(id = "login",
-        wellPanel(textInput("userName", "Username"),
+  tagList(theme = shinytheme("superhero"),
+    div(theme = shinytheme("superhero"),
+        id = "login",
+        wellPanel(textInput("userName", "Username"),theme = shinytheme("superhero"),
                   passwordInput("passwd", "Password"),
                   br(),actionButton("Login", "Log in"))),
     tags$style(type="text/css", "#login {font-size:10px;   text-align: left;position:absolute;top: 40%;left: 50%;margin-top: -100px;margin-left: -150px;}")
@@ -17,8 +19,8 @@ logout.UI <- function(){
 }
 snapp.UI <- function(){
   # tagList(tabPanel("Test"))
-  shinyUI(
-    navbarPage("Snapp database",
+  fluidPage(theme = shinytheme("superhero"),
+    navbarPage(theme = shinytheme("superhero"),"Snapp database",
                tabPanel("Queries",
                         navlistPanel(
                           "Tables",
@@ -38,11 +40,12 @@ snapp.UI <- function(){
                         )),
                tabPanel("Insert",
                         navlistPanel(
-                          tabPanel("Drivers")
-                          # tabPanel("User Table", userInputUI("userInput"))
+                          tabPanel("Drivers"),
+                          tabPanel("Staffs", insert.staff.UI("insertStaff"))
                         )),
                tabPanel("Custom SQL!", customSQL.UI("customSQL"))
-    )
+              )
+    
   )
 }
 

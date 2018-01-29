@@ -8,5 +8,9 @@ source("customSQL.UI.R")
 source("tables.server.R")
 source("tables.UI.R")
 
+source("insert.staff.UI.R")
+source("insert.staff.R")
+source("insert.query.R")
+
 
 db.connection <- connect.to.db()
