@@ -1,4 +1,4 @@
-freeUI <- function(id, label = "firstTry"){
+customSQL.UI <- function(id, label = "firstTry"){
   ns <- NS(id)
   
   tagList(
