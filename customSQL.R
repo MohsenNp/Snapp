@@ -1,4 +1,4 @@
-free <- function(input, output, session, stringsAsFactors) {
+customSQL <- function(input, output, session, stringsAsFactors) {
   datasetInput <- eventReactive(input$search, {
     input$texput
   }
