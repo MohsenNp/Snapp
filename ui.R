@@ -6,16 +6,37 @@ Logged = FALSE;
 user_pass <- data.frame(user = c('admin', 'hamid', 'mohsen'), pass <- c('admin', 'hamid', 'mohsen'))
 
 login.UI <- function(){
-  tagList(theme = shinytheme("superhero"),
-    div(theme = shinytheme("superhero"),
-        id = "login",
-        wellPanel(textInput("userName", "Username"),theme = shinytheme("superhero"),
-                  passwordInput("passwd", "Password"),
-                  br(),actionButton("Login", "Log in"))),
-    tags$style(type="text/css", "#login {font-size:10px;   text-align: left;position:absolute;top: 40%;left: 50%;margin-top: -100px;margin-left: -150px;}")
-  )}
-logout.UI <- function(){
-  
+  fluidPage(
+    theme = shinytheme("superhero"),
+    fluidRow(
+      theme = shinytheme("superhero"),
+      wellPanel(
+        id = 'snappLogo',
+        imageOutput('logo', height = 200),
+        tags$style(type = "text/css", "#snappLogo {text-align: left;position:absolute;top: 50%;left: 20%;margin-top: -150px;margin-left: -150px}")
+      )
+    ),
+    fluidRow(
+      theme= shinytheme("superhero"),
+      wellPanel( 
+        id = 'welcomeMsg',
+        theme= shinytheme("superhero"),
+        h3("Welcome To Snapp!"),
+        tags$style(type = "text/css", "#welcomeMsg {font-size:10px;   text-align: left;position:absolute;top: 45%;left: 75%;margin-top: -150px;margin-left: -150px}")
+      )
+    ),
+    fluidRow(
+      theme= shinytheme("superhero"),
+      wellPanel(
+        id = 'login',
+        textInput("userName", "Username"),theme = shinytheme("superhero"),
+        passwordInput("passwd", "Password", width = 224),
+        br(),actionButton("Login", "Log in")),
+        tags$style(type = "text/css", "#login {font-size:10px;   text-align: left;position:absolute;top: 55%;left: 75%;margin-top: -150px;margin-left: -150px}"
+      )
+    )
+    
+  )
 }
 snapp.UI <- function(){
   # tagList(tabPanel("Test"))
