@@ -39,7 +39,6 @@ login.UI <- function(){
   )
 }
 admin.UI <- function(){
-  # tagList(tabPanel("Test"))
   fluidPage(theme = shinytheme("superhero"), title = "Snapp!",
     navbarPage("Snapp", theme = shinytheme("superhero"),imageOutput("icon"),
                tabPanel("Queries",
@@ -79,7 +78,6 @@ admin.UI <- function(){
   )
 }
 driver.UI <- function(){
-  # tagList(tabPanel("Test"))
   fluidPage(theme = shinytheme("superhero"),
             navbarPage("Snapp", theme = shinytheme("superhero"),imageOutput("icon"),
                        tabPanel("Queries",
@@ -105,13 +103,11 @@ driver.UI <- function(){
 }
 
 user.UI <- function(){
-  # tagList(tabPanel("Test"))
   fluidPage(theme = shinytheme("superhero"),
             navbarPage("Snapp", theme = shinytheme("superhero"),imageOutput("icon"),
                        tabPanel("Queries",
                                 navlistPanel(
                                   "Tables",
-                                  tabPanel("DriverPhones", tables.UI("phnn", "phnn")),
                                   tabPanel("SupporterStaffs", tables.UI("supstf", "supstf")),
                                   tabPanel("UserInformation", tables.UI("uservi", "uservi")),
                                   tabPanel("Travels", tables.UI("trvl", "trvl")),

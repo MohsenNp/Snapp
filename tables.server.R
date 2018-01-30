@@ -1,6 +1,6 @@
-tables.server <- function(input, output, session, table.name, query=NULL, view=FALSE) {
+tables.server <- function(input, output, session, table.name, query=NULL, view=FALSE, userphnn=0, drvid=0,supid=0) {
   table.name <- tolower(table.name)
-  if (!dbExistsTable(db.connection, table.name) && view == FALSE) {
+  if (!dbExistsTable(db.connection, table.name) && view == FALSE && userphnn == 0 && drvid == 0 && supid == 0) {
     print(paste(table.name, "Table doesn't Exist", sep = ' '))
     return()
   } else {
