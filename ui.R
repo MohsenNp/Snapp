@@ -40,8 +40,8 @@ login.UI <- function(){
 }
 admin.UI <- function(){
   # tagList(tabPanel("Test"))
-  fluidPage(theme = shinytheme("superhero"),
-    navbarPage(theme = shinytheme("superhero"),imageOutput("icon"),
+  fluidPage(theme = shinytheme("superhero"), title = "Snapp!",
+    navbarPage("Snapp", theme = shinytheme("superhero"),imageOutput("icon"),
                tabPanel("Queries",
                         navlistPanel(
                           "Tables",
@@ -56,7 +56,8 @@ admin.UI <- function(){
                           tabPanel("TravelDestinations", tables.UI("dest", "dest")),
                           tabPanel("UserDiscountCodes", tables.UI("userdiscod", "userdiscod")),
                           tabPanel("UserFavouriteAddresses", tables.UI("favaddrss", "favaddrss")),
-                          tabPanel("CommentsOnOrders", tables.UI("sprvsn", "sprvsn"))
+                          tabPanel("CommentsOnOrders", tables.UI("sprvsn", "sprvsn")),
+                          tabPanel("Information", tables.UI("supstfvi", "supstfvi"))
                         )),
                tabPanel("Insert",
                         navlistPanel(
@@ -77,14 +78,14 @@ admin.UI <- function(){
     
   )
 }
-user.UI <- function(){
+driver.UI <- function(){
   # tagList(tabPanel("Test"))
   fluidPage(theme = shinytheme("superhero"),
             navbarPage(theme = shinytheme("superhero"),imageOutput("icon"),
                        tabPanel("Queries",
                                 navlistPanel(
                                   "Tables",
-                                  tabPanel("DriverInformation", tables.UI("drv", "drv")),
+                                  tabPanel("DriverInformation", tables.UI("drivevi", "drivevi")),
                                   tabPanel("Cars", tables.UI("car", "car")),
                                   tabPanel("DriverPhones", tables.UI("phnn", "phnn")),
                                   tabPanel("SupporterStaffs", tables.UI("supstf", "supstf")),
@@ -103,7 +104,7 @@ user.UI <- function(){
   )
 }
 
-driver.UI <- function(){
+user.UI <- function(){
   # tagList(tabPanel("Test"))
   fluidPage(theme = shinytheme("superhero"),
             navbarPage(theme = shinytheme("superhero"),imageOutput("icon"),
@@ -112,7 +113,7 @@ driver.UI <- function(){
                                   "Tables",
                                   tabPanel("DriverPhones", tables.UI("phnn", "phnn")),
                                   tabPanel("SupporterStaffs", tables.UI("supstf", "supstf")),
-                                  tabPanel("UserInformation", tables.UI("user", "user")),
+                                  tabPanel("UserInformation", tables.UI("uservi", "uservi")),
                                   tabPanel("Travels", tables.UI("trvl", "trvl")),
                                   tabPanel("TravelDestinations", tables.UI("dest", "dest")),
                                   tabPanel("UserDiscountCodes", tables.UI("userdiscod", "userdiscod")),

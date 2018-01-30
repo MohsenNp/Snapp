@@ -6,15 +6,15 @@ insert.userdiscod <- function(input, output, session) {
     tryCatch(
       {
         dbSendQuery(db.connection, query)
-        return('New car has been added successfully!')
+        return('New User Discount has been added successfully!')
       },
       warning = function(war) {
-        return('data is invalid')
+        return('Query Failed')
         
       }, error = function(err) {
         
         # error handler picks up where error was generated
-        return('data is invalid')
+        return('Query Failed')
       }
     )
   }

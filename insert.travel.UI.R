@@ -4,7 +4,6 @@ insert.travel.UI <- function(id, label = "insert.travel"){
   tagList(
     fluidPage(
       fluidRow(
-        column(3, textInput(ns("trvlid"),label = h6("ID"))),
         column(3, selectInput(ns("paytype"),label = h6("Pay Type"), choices = c("SnappBox" = "box", "SnappTaxi" = "taxi"))) ,
         column(3, textInput(ns("cst"),label = h6("Cost"))),
         column(3, textInput(ns("userphn"),label = h6("User Phone"))),

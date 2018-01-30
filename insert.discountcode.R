@@ -4,19 +4,19 @@ insert.discountcode <- function(input, output, session) {
     codtype = paste('\'',input$codtype,'\'', sep = '')
     codexpdate = paste('\'',input$codexpdate,'\'', sep = '')
     codpers = input$codpers
-    query <- insert.query('cars',parameters = c(codid, codtype, codexpdate, codpers))
+    query <- insert.query('discountcodes',parameters = c(codid, codtype, codexpdate, codpers))
     tryCatch(
       {
         dbSendQuery(db.connection, query)
-        return('New car has been added successfully!')
+        return('Query Accepted!')
       },
       warning = function(war) {
-        return('data is invalid')
+        return('Query Failed')
         
       }, error = function(err) {
         
         # error handler picks up where error was generated
-        return('data is invalid')
+        return('Query Failed')
       }
     )
   }

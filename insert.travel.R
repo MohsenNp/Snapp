@@ -1,25 +1,24 @@
 insert.travel <- function(input, output, session) {
   datasetInput <- eventReactive(input$insert, {
-    trvlid = input$trvlid
     paytype = paste('\'',input$paytype,'\'', sep = '')
     cst = input$cst
     strtpntx = 0
     strtpnty = 0
     userphn = input$userphn
-    drvid = input$stfid
-    query <- insert.query('travels',parameters = c(trvlid, paytype, cst, strtpntx, strtpnty, userphn, drvid))
+    stfid = input$stfid
+    query <- insert.query('travels',fields = c("paytype", "cst", "strtpntx", "strtpnty", "userphn", "stfid"), parameters = c(paytype, cst, strtpntx, strtpnty, userphn, stfid))
     tryCatch(
       {
         dbSendQuery(db.connection, query)
-        return('New car has been added successfully!')
+        return('New Travel has been added successfully!')
       },
       warning = function(war) {
-        return('data is invalid')
+        return('Query Failed')
         
       }, error = function(err) {
         
         # error handler picks up where error was generated
-        return('data is invalid')
+        return('Query Failed')
       }
     )
   }

@@ -50,16 +50,15 @@ server = (function(input, output,session) {
           background = FALSE
         ))
         }, deleteFile = FALSE)
-      output$icon <- renderImage({
-        return(list(
-          src = "./images/Snapp-logo.png",
-          contentType = "image/png",
-          alt = "Face",
-          width = 100,
-          height = 28,
-          background = FALSE
-        ))
-      }, deleteFile = FALSE)
+      # output$icon <- renderImage({
+      #   return(list(
+      #     src = "./images/Snapp-logo.png",
+      #     contentType = "image/png",
+      #     width = 100,
+      #     height = 28,
+      #     background = FALSE
+      #   ))
+      # }, deleteFile = FALSE)
       # output$page <- renderUI(login.UI())
     }
     if (USER$Logged == TRUE) 
@@ -73,6 +72,9 @@ server = (function(input, output,session) {
         output$page <- renderUI(driver.UI())
       }
       callModule(tables.server, "stf", table.name="Staffs")
+      callModule(tables.server, "uservi", table.name="uservi", view=TRUE)
+      callModule(tables.server, "drivevi", table.name="drivevi", view=TRUE)
+      callModule(tables.server, "supstfvi", table.name="supstfvi", view=TRUE)
       callModule(tables.server, "drv", table.name="Drivers")
       callModule(tables.server, "car", table.name="Cars")
       callModule(tables.server, "phnn", table.name="DriverPhones")
@@ -88,6 +90,7 @@ server = (function(input, output,session) {
       callModule(insert.car, "insert.car")
       callModule(insert.user, "insert.user")
       callModule(insert.driverphone, "insert.driverphone")
+      callModule(insert.travel, "insert.travel")
       callModule(insert.traveldest, "insert.traveldest")
       callModule(insert.supporter.staff, "insert.supporter.staff")
       callModule(insert.userdiscod, "insert.userdiscod")

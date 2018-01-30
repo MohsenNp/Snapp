@@ -14,15 +14,15 @@ insert.driver <- function(input, output, session) {
       {
         dbSendQuery(db.connection, staff_query)
         dbSendQuery(db.connection, driver_query)
-        return('New Driver has been added successfully!')
+        return('New Driver has been added Successfully!')
       },
       warning = function(war) {
-        print('data is invalid')
+        print('Query Failed')
 
       }, error = function(err) {
 
         # error handler picks up where error was generated
-        print('data is invalid')
+        print('Query Failed')
       }
     )
     }
