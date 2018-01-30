@@ -1,4 +1,5 @@
 library(shiny)
+usertype <- 1
 server = (function(input, output,session) {
   
   USER <- reactiveValues(Logged = FALSE)
@@ -14,13 +15,19 @@ server = (function(input, output,session) {
           if (length(Id.username) > 0 & length(Id.password) > 0) {
             if (Id.username == Id.password) {
               USER$Logged <- TRUE
+              if (Id.username == 'admin'){
+                usertype = 1;
+              } else if (Id.username == 'mohsen'){
+                usertype = 2;
+              } else {
+                usertype = 3;
+              }
             } 
           }
         }
       }
     }    
   })
-  
   observeEvent(input$logout_btn, {
     USER$Logged <- FALSE
     output$page <- renderUI({
@@ -57,11 +64,14 @@ server = (function(input, output,session) {
     }
     if (USER$Logged == TRUE) 
     {
-      # output$page <- renderUI({
-      #   div(class="outer",do.call(navbarPage,c(inverse=TRUE,title = "Snapp",snapp.UI())))
-      # })
-      output$page <- renderUI(snapp.UI())
-      datafile <- callModule(customSQL, "customSQL", stringsAsFactors = FALSE)
+      if (usertype == 1){
+        output$page <- renderUI(admin.UI())
+        datafile <- callModule(customSQL, "customSQL", stringsAsFactors = FALSE)
+      } else if (usertype == 2){
+        output$page <- renderUI(user.UI())
+      } else {
+        output$page <- renderUI(driver.UI())
+      }
       callModule(tables.server, "stf", table.name="Staffs")
       callModule(tables.server, "drv", table.name="Drivers")
       callModule(tables.server, "car", table.name="Cars")
@@ -73,13 +83,25 @@ server = (function(input, output,session) {
       callModule(tables.server, "dest", table.name="TravelDestinations")
       callModule(tables.server, "userdiscod", table.name="UserDiscountCodes")
       callModule(tables.server, "favaddrss", table.name="UserFavouriteAddresses")
-      callModule(tables.server, "sprvsn", table.name="CommentsOnOrders")
+      callModule(tables.server, "sprvsn", table.name="CommentsOnTravels")
       callModule(insert.driver, "insert.driver")
       callModule(insert.car, "insert.car")
+      callModule(insert.user, "insert.user")
+      callModule(insert.driverphone, "insert.driverphone")
+      callModule(insert.traveldest, "insert.traveldest")
+      callModule(insert.supporter.staff, "insert.supporter.staff")
+      callModule(insert.userdiscod, "insert.userdiscod")
+      callModule(insert.userfavaddr, "insert.userfavaddr")
+      callModule(insert.discountcode, "insert.discountcode")
+      callModule(insert.comontrv, "insert.comontrv")
       output$table <- renderDataTable({
         datafile()
       })
     }
   })
+  observe({
+    
+  }
+  )
 })
 

@@ -1,4 +1,4 @@
-insert.supporterstaff.UI <- function(id, label = "insert.supporterstaff"){
+insert.supporter.staff.UI <- function(id, label = "insert.supporter.staff"){
   ns <- NS(id)
   
   tagList(

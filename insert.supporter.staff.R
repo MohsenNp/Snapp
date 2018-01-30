@@ -1,4 +1,4 @@
-insert.supporterstaff <- function(input, output, session) {
+insert.supporter.staff <- function(input, output, session) {
   datasetInput <- eventReactive(input$insert, {
     stfid = input$stfid
     acsslvl = input$acsslvl

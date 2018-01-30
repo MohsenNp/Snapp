@@ -38,7 +38,7 @@ login.UI <- function(){
     
   )
 }
-snapp.UI <- function(){
+admin.UI <- function(){
   # tagList(tabPanel("Test"))
   fluidPage(theme = shinytheme("superhero"),
     navbarPage(theme = shinytheme("superhero"),imageOutput("icon"),
@@ -69,11 +69,68 @@ snapp.UI <- function(){
                           tabPanel("TravelDestinations", insert.traveldest.UI("insert.traveldest")),
                           tabPanel("UserDiscountCodes", insert.userdiscod.UI("insert.userdiscod")),
                           tabPanel("UserFavouriteAddresses", insert.userfavaddr.UI("insert.userfavaddr")),
+                          tabPanel("SupporterStaff", insert.supporter.staff.UI("insert.supporter.staff")),
                           tabPanel("CommentsOnTravels", insert.comontrv.UI("insert.comontrv"))
                         )),
                tabPanel("Custom SQL!", customSQL.UI("customSQL"))
               )
     
+  )
+}
+user.UI <- function(){
+  # tagList(tabPanel("Test"))
+  fluidPage(theme = shinytheme("superhero"),
+            navbarPage(theme = shinytheme("superhero"),imageOutput("icon"),
+                       tabPanel("Queries",
+                                navlistPanel(
+                                  "Tables",
+                                  tabPanel("DriverInformation", tables.UI("drv", "drv")),
+                                  tabPanel("Cars", tables.UI("car", "car")),
+                                  tabPanel("DriverPhones", tables.UI("phnn", "phnn")),
+                                  tabPanel("SupporterStaffs", tables.UI("supstf", "supstf")),
+                                  tabPanel("Travels", tables.UI("trvl", "trvl")),
+                                  tabPanel("TravelDestinations", tables.UI("dest", "dest"))
+                                )),
+                       tabPanel("Update",
+                                navlistPanel(
+                                  tabPanel("DriverInformation", insert.driver.UI("insert.driver")),
+                                  tabPanel("Cars", insert.car.UI("insert.car")),
+                                  tabPanel("DriverPhone", insert.driverphone.UI("insert.driverphone")),
+                                  tabPanel("Travels", insert.travel.UI("insert.travel"))
+                                ))
+            )
+            
+  )
+}
+
+driver.UI <- function(){
+  # tagList(tabPanel("Test"))
+  fluidPage(theme = shinytheme("superhero"),
+            navbarPage(theme = shinytheme("superhero"),imageOutput("icon"),
+                       tabPanel("Queries",
+                                navlistPanel(
+                                  "Tables",
+                                  tabPanel("DriverPhones", tables.UI("phnn", "phnn")),
+                                  tabPanel("SupporterStaffs", tables.UI("supstf", "supstf")),
+                                  tabPanel("UserInformation", tables.UI("user", "user")),
+                                  tabPanel("Travels", tables.UI("trvl", "trvl")),
+                                  tabPanel("TravelDestinations", tables.UI("dest", "dest")),
+                                  tabPanel("UserDiscountCodes", tables.UI("userdiscod", "userdiscod")),
+                                  tabPanel("UserFavouriteAddresses", tables.UI("favaddrss", "favaddrss")),
+                                  tabPanel("CommentsOnOrders", tables.UI("sprvsn", "sprvsn"))
+                                )),
+                       tabPanel("Update",
+                                navlistPanel(
+                                  tabPanel("UserInformation", insert.user.UI("update.user")),
+                                  tabPanel("DiscountCodes", insert.discountcode.UI("insert.discountcode")),
+                                  tabPanel("Travels", insert.travel.UI("insert.travel")),
+                                  tabPanel("TravelDestinations", insert.traveldest.UI("insert.traveldest")),
+                                  tabPanel("UserDiscountCodes", insert.userdiscod.UI("insert.userdiscod")),
+                                  tabPanel("UserFavouriteAddresses", insert.userfavaddr.UI("update.userfavaddr")),
+                                  tabPanel("CommentsOnTravels", insert.comontrv.UI("insert.comontrv"))
+                                ))
+            )
+            
   )
 }
 
