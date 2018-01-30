@@ -7,6 +7,17 @@ tables.server <- function(input, output, session, table.name, query=NULL, view=F
     if (is.null(query)){
       query <- paste("SELECT * FROM ", table.name, sep = '')
     }
+    if (userphnn != 0){
+      query <- paste(query, "WHERE userphn =", sep = ' ')
+      query <- paste(query, userphnn, sep = '')
+    } else if (drvid != 0){
+      query <- paste(query, "WHERE stfid =", sep = ' ')
+      query <- paste(query, drvid, sep = '')
+    } else if (supid != 0){
+      query <- paste(query, "WHERE stfid =", sep = ' ')
+      query <- paste(query, supid, sep = '')
+    }
+    print(query)
     output$table <- renderDataTable(
       dbGetQuery(db.connection, query, schema="snapp")
     )
