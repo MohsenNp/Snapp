@@ -43,6 +43,16 @@ server = (function(input, output,session) {
           background = FALSE
         ))
         }, deleteFile = FALSE)
+      output$icon <- renderImage({
+        return(list(
+          src = "./images/Snapp-logo.png",
+          contentType = "image/png",
+          alt = "Face",
+          width = 100,
+          height = 28,
+          background = FALSE
+        ))
+      }, deleteFile = FALSE)
       # output$page <- renderUI(login.UI())
     }
     if (USER$Logged == TRUE) 
@@ -64,7 +74,8 @@ server = (function(input, output,session) {
       callModule(tables.server, "userdiscod", table.name="UserDiscountCodes")
       callModule(tables.server, "favaddrss", table.name="UserFavouriteAddresses")
       callModule(tables.server, "sprvsn", table.name="CommentsOnOrders")
-      callModule(insert.staff, "insertStaff")
+      callModule(insert.driver, "insert.driver")
+      callModule(insert.car, "insert.car")
       output$table <- renderDataTable({
         datafile()
       })

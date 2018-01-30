@@ -29,8 +29,8 @@ login.UI <- function(){
       theme= shinytheme("superhero"),
       wellPanel(
         id = 'login',
-        textInput("userName", "Username"),theme = shinytheme("superhero"),
-        passwordInput("passwd", "Password", width = 224),
+        textInput("userName", "Username", value = "admin"),theme = shinytheme("superhero"),
+        passwordInput("passwd", "Password", width = 224, value = "admin"),
         br(),actionButton("Login", "Log in")),
         tags$style(type = "text/css", "#login {font-size:10px;   text-align: left;position:absolute;top: 55%;left: 75%;margin-top: -150px;margin-left: -150px}"
       )
@@ -41,7 +41,7 @@ login.UI <- function(){
 snapp.UI <- function(){
   # tagList(tabPanel("Test"))
   fluidPage(theme = shinytheme("superhero"),
-    navbarPage(theme = shinytheme("superhero"),"Snapp database",
+    navbarPage(theme = shinytheme("superhero"),imageOutput("icon"),
                tabPanel("Queries",
                         navlistPanel(
                           "Tables",
@@ -54,15 +54,22 @@ snapp.UI <- function(){
                           tabPanel("DiscountCodes", tables.UI("discod", "discod")),
                           tabPanel("Travels", tables.UI("trvl", "trvl")),
                           tabPanel("TravelDestinations", tables.UI("dest", "dest")),
-                          # tabPanel("Userp", tables.UI("userp", "userp")), # ?????
                           tabPanel("UserDiscountCodes", tables.UI("userdiscod", "userdiscod")),
                           tabPanel("UserFavouriteAddresses", tables.UI("favaddrss", "favaddrss")),
                           tabPanel("CommentsOnOrders", tables.UI("sprvsn", "sprvsn"))
                         )),
                tabPanel("Insert",
                         navlistPanel(
-                          tabPanel("Drivers"),
-                          tabPanel("Staffs", insert.staff.UI("insertStaff"))
+                          tabPanel("Driver", insert.driver.UI("insert.driver")),
+                          tabPanel("Cars", insert.car.UI("insert.car")),
+                          tabPanel("DriverPhone", insert.driverphone.UI("insert.driverphone")),
+                          tabPanel("Users", insert.user.UI("insert.user")),
+                          tabPanel("DiscountCodes", insert.discountcode.UI("insert.discountcode")),
+                          tabPanel("Travels", insert.travel.UI("insert.travel")),
+                          tabPanel("TravelDestinations", insert.traveldest.UI("insert.traveldest")),
+                          tabPanel("UserDiscountCodes", insert.userdiscod.UI("insert.userdiscod")),
+                          tabPanel("UserFavouriteAddresses", insert.userfavaddr.UI("insert.userfavaddr")),
+                          tabPanel("CommentsOnTravels", insert.comontrv.UI("insert.comontrv"))
                         )),
                tabPanel("Custom SQL!", customSQL.UI("customSQL"))
               )
