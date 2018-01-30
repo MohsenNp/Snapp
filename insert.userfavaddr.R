@@ -2,7 +2,7 @@ insert.userfavaddr <- function(input, output, session) {
   datasetInput <- eventReactive(input$insert, {
     userphn = input$userphn
     addr = paste('\'',input$addr,'\'', sep = '')
-    query <- insert.query('traveldestinations', parameters = c(userphn, addr))
+    query <- insert.query('userfavouriteaddresses', parameters = c(userphn, addr))
     tryCatch(
       {
         dbSendQuery(db.connection, query)

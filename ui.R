@@ -29,8 +29,8 @@ login.UI <- function(){
       theme= shinytheme("superhero"),
       wellPanel(
         id = 'login',
-        textInput("userName", "Username", value = "admin"),theme = shinytheme("superhero"),
-        passwordInput("passwd", "Password", width = 224, value = "admin"),
+        textInput("userName", "Username", value = "mohsen"),theme = shinytheme("superhero"),
+        passwordInput("passwd", "Password", width = 224, value = "mohsen"),
         br(),actionButton("Login", "Log in")),
         tags$style(type = "text/css", "#login {font-size:10px;   text-align: left;position:absolute;top: 55%;left: 75%;margin-top: -150px;margin-left: -150px}"
       )
@@ -81,7 +81,7 @@ admin.UI <- function(){
 driver.UI <- function(){
   # tagList(tabPanel("Test"))
   fluidPage(theme = shinytheme("superhero"),
-            navbarPage(theme = shinytheme("superhero"),imageOutput("icon"),
+            navbarPage("Snapp", theme = shinytheme("superhero"),imageOutput("icon"),
                        tabPanel("Queries",
                                 navlistPanel(
                                   "Tables",
@@ -107,7 +107,7 @@ driver.UI <- function(){
 user.UI <- function(){
   # tagList(tabPanel("Test"))
   fluidPage(theme = shinytheme("superhero"),
-            navbarPage(theme = shinytheme("superhero"),imageOutput("icon"),
+            navbarPage("Snapp", theme = shinytheme("superhero"),imageOutput("icon"),
                        tabPanel("Queries",
                                 navlistPanel(
                                   "Tables",

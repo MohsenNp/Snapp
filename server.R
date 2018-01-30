@@ -1,5 +1,5 @@
 library(shiny)
-usertype <- 1
+usertype <- 0
 server = (function(input, output,session) {
   
   USER <- reactiveValues(Logged = FALSE)
