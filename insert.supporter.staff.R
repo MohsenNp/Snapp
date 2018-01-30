@@ -6,7 +6,8 @@ insert.supporter.staff <- function(input, output, session) {
     lastname = paste('\'',input$lastname,'\'', sep = '')
     acsslvl = input$acsslvl
     rgn = input$rgn
-    staff_query <- insert.query('staffs', parameters = c(stfid, cid, name, lastname) )
+    is.driver <- 'FALSE'
+    staff_query <- insert.query('staffs', parameters = c(stfid, cid, name, lastname, is.driver) )
     query <- insert.query('supporterstaffs', parameters = c(stfid, acsslvl, rgn))
     tryCatch(
       {

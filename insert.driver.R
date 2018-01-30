@@ -8,7 +8,7 @@ insert.driver <- function(input, output, session) {
     lastname = paste('\'',input$lastname,'\'', sep = '')
     cartPic = paste('\'',input$cartPic,'\'', sep = '')
     avatar = paste('\'',input$avatar,'\'', sep = '')
-    staff_query <- insert.query('staffs', parameters = c(stfid, cid, name, lastname) )
+    staff_query <- insert.query('staffs', parameters = c(stfid, cid, name, lastname, 'TRUE') )
     driver_query <- insert.query('drivers', parameters = c(stfid, 'NULL', 'NULL', cartPic[1], 4.0, avatar[1]))
     tryCatch(
       {
